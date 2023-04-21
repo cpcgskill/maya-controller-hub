@@ -132,7 +132,7 @@ class ControllerHub(object):
                 if any((i[0] == '.' for i in name[:-1])):
                     continue
                 name = '.'.join((self.__name_remake_regexp.sub(i, '_') for i in name))
-                if f.split('.')[-1] == 'control':
+                if f.split('.')[-1] in {'control', 'controller'}:
                     with open(f, 'rb') as f_handle:
                         data = json.loads(f_handle.read().decode('utf-8'))
                     if data['version'] == '1':
